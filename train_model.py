@@ -19,11 +19,12 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 # )
 
 #check the files uploaded
-# response = openai.File.list()
+response = openai.File.list()
 
-# for file in response['data']:
-#     created_at = datetime.datetime.fromtimestamp(file['created_at']).strftime('%Y-%m-%d %H:%M:%S')
-#     print(f"File ID: {file['id']}, Filename: {file['filename']}, Created at: {created_at}")
+for file in response['data']:
+    created_at = datetime.datetime.fromtimestamp(file['created_at']).strftime('%Y-%m-%d %H:%M:%S')
+    print(f"File ID: {file['id']}, Filename: {file['filename']}, Created at: {created_at}")
 
+print(openai.Model.list())
 # train model
-openai.FineTuningJob.create(training_file="file-exNqzLQ2MD5bsnMO8W9ItR9a", model="gpt-3.5-turbo")
+# openai.FineTuningJob.create(training_file="file-exNqzLQ2MD5bsnMO8W9ItR9a", model="gpt-3.5-turbo")
